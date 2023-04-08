@@ -26,7 +26,7 @@ const Product = (props) => {
         alt="book__images"
         className="bookImage"
       />
-      <button>Add to Basket</button>
+      <button className="product_btn">Add to Basket</button>
     </div>
   );
 };
