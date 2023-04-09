@@ -4,7 +4,11 @@ import image from "../ama.png";
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import { Link } from "react-router-dom";
+import { useStateValue } from "./StateProvider";
 const Header = () => {
+
+ 
+  const [{basket},dispatch]= useStateValue()
   return (
     <div className="header">
       {/*image*/}
@@ -34,10 +38,10 @@ const Header = () => {
         <span className="header__option-LineOne">Your</span>
             <span className="header__option-LineTwo">Prime</span>
         </div>
-        <Link to='checkout'>
+        <Link to='/checkout'>
         <div className="header__optionBasket">
           <ShoppingBasketIcon />
-          <span className="header__option-LineTwo header__basketCount">0</span>
+          <span className="header__option-LineTwo header__basketCount">{basket.length}</span>
         </div>
         </Link>
 
