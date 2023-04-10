@@ -14,6 +14,8 @@ const reducer = (state, action) => {
         basket: [...state.basket, action.item],
       };
 
+
+//Remove from the basket functionality 
       case "REMOVE_FROM_BASKET":
       //catching the index that we click
       const index = state.basket.findIndex(
