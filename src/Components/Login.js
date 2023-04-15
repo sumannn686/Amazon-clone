@@ -4,14 +4,23 @@ import "./Login.css";
 import { Link } from "react-router-dom";
 import image from "./amazon.png";
 import {auth}  from "./firebase";
+import { useNavigate } from 'react-router-dom';
+
 const Login = () => {
+
+const navigate = useNavigate()
+
 
   const [email,setEmail]= useState('');
   const [password, setPassword]=  useState('')
 
   const signIn =(e)=>{
     e.preventDefault()
-
+  auth.signInWithEmailAndPassword(email,password)
+  .then( auth =>{
+    navigate('/')
+  })
+  .catch(error=>alert(error.message))
   }
 
   //registeration
@@ -19,8 +28,13 @@ const Login = () => {
    e.preventDefault()
 
    auth.createUserWithEmailAndPassword(email, password)
+   //it sucessfully created username and password
     .then((auth)=>{
-    console.log(auth)
+
+
+    if (auth){
+      navigate('/');
+    }
     })
     .catch(error => alert(error.message))
 

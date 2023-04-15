@@ -5,7 +5,7 @@ import { useStateValue } from "./StateProvider";
 import CheckoutProduct from "./CheckoutProduct";
 
 const Checkout = ({price}) => {
-  const [{basket}, dispatch] = useStateValue()
+  const [{basket, user}, dispatch] = useStateValue()
   
   return (
     <div className="checkout">
@@ -16,6 +16,7 @@ const Checkout = ({price}) => {
           className="amazon_banner"
         />
         <div>
+          <h3>Hello {!user?" Guest":user?.email.split('@')[0]},</h3>
           <h2 className="basket__title">Your shopping Basket</h2>
           {
             basket.map((item)=>(
